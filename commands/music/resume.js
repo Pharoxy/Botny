@@ -5,6 +5,16 @@ module.exports = {
         let guildQueue = client.player.getQueue(message.guild.id);
         if(guildQueue && guildQueue.isPlaying){
             guildQueue.setPaused(false);
+            const resume = {
+                color: 0x00f9f9,
+                fields:[
+                    {
+                        name: '<a:arrow_forward:944414908865466449> Music has been resumed!',
+                        value: `Resumed by: @${message.author.tag}`,
+                    },
+                ],
+            }
+            message.channel.send({embeds: [resume]});
         }
     }
 }  
