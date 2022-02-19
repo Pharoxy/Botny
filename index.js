@@ -2,6 +2,7 @@ const { Client, Intents } = require('discord.js');
 const { RepeatMode } = require('discord-music-player');
 const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
+const config = require('./config.json');
 global.client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILDS] });
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
@@ -20,5 +21,4 @@ const player = new Player(client, {
 // You can define the Player as *client.player* to easily access it.
 client.player = player;
 
-
-client.login('OTQyNDIxODAxMDk3NjU4Mzc4.YgkQsg.Mx-K9WNSzwFVgGZAjPC4id4S1xQ');
+client.login('config.token');
