@@ -5,6 +5,11 @@ module.exports = (Discord, client, message) => {
     const cmd = args.shift().toLowerCase();
         //If command is play
         if(cmd == 'play'){
+            //If args is blank
+            if(args.length < 1){
+                console.log('You must arguments in here!');
+                return;
+            }
             //If the bot is in a channel
             if(message.guild.channels.cache.some(channel => (channel.type === 'GUILD_VOICE' && channel.members.has(client.user.id)))){
                 //If bot is on, check if the user is in voice chat
