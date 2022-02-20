@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: 'np',
+    category: 'music',
     description: 'Displays current song playing',
     async execute(client, message, args){
         // Obtaines player queue, and if available, returns an embeded response with information about the song currently playing

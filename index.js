@@ -16,9 +16,9 @@ client.events = new Discord.Collection();
 //Initialzes Player
 const { Player } = require("discord-music-player");
 const player = new Player(client, {
-    leaveOnEmpty: false, // This options are optional.
+    leaveOnEmpty: false,
 });
-// You can define the Player as *client.player* to easily access it.
+
 client.player = player;
 
-client.login('config.token');
+client.login(config.token);
