@@ -1,5 +1,7 @@
 module.exports = {
     name: 'resume',
+    aliases: ['r', 'start'],
+    category: 'music',
     description: 'Resumes currently paused song',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
@@ -10,7 +12,7 @@ module.exports = {
                 fields:[
                     {
                         name: '<a:arrow_forward:944414908865466449> Music has been resumed!',
-                        value: `Resumed by: @${message.author.tag}`,
+                        value: `Resumed by: <@${message.author.id}>`,
                     },
                 ],
             }

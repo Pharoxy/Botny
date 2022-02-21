@@ -3,7 +3,8 @@ const paginationEmbed = require("discordjs-button-pagination");
 
 module.exports = {
     name: 'getqueue',
-    alias: ['getq', 'queue', 'songlist'],
+    aliases: ['getq', 'queue', 'songlist'],
+    category: 'music',
     description: 'Obtains current song queue',
     async execute(client, message, args){
         // Determines if queue is active or player exists. Failing so returns a bot reply

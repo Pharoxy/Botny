@@ -1,6 +1,8 @@
 module.exports = {
-    name: 'pbar',
-    description: 'Displays progress bar',
+    name: 'progressbar',
+    aliases: ['pbar'],
+    category: 'music',
+    description: 'Displays progress bar of currents song',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
         if(guildQueue && guildQueue.isPlaying){
@@ -14,7 +16,7 @@ module.exports = {
                     },
                 ],
                 footer: {
-                    text: `Requested by @${message.author.tag}`, 
+                    text: `Requested by <@${message.author.id}>`, 
                 }
             }
             message.channel.send({embeds: [pBar]});

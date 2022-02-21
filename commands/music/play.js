@@ -1,7 +1,7 @@
 module.exports = {
     name: 'play',
     category: 'music',
-    description: 'plays music through bot',
+    description: 'Queues a song in music player',
     async execute(client, message, args){
         let maxQueueSize = 3;
         if(!message.member.voice.channelId){

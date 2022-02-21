@@ -2,6 +2,8 @@ const { ContextMenuInteraction } = require("discord.js");
 
 module.exports = {
     name: 'pause',
+    aliases: ['p'],
+    category: 'music',
     description: 'Pauses current song',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
@@ -13,7 +15,7 @@ module.exports = {
                     fields:[
                         {
                             name: '<a:pause_button:944414921880371240> Music has been paused!',
-                            value: `Paused by: @${message.author.tag}`,
+                            value: `Paused by: <@${message.author.id}>`,
                         },
                     ],
                 }

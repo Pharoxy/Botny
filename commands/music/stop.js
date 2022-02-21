@@ -1,6 +1,8 @@
 module.exports = {
     name: 'stop',
-    description: 'stops music player',
+    aliases: ['halt'],
+    category: 'music',
+    description: 'Disconnects music player and deletes its queue',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
         if(guildQueue && guildQueue.isPlaying){
@@ -10,7 +12,7 @@ module.exports = {
                 fields:[
                     {
                         name: '<a:stop_button:944415175614816297> Music has been stopped!',
-                        value: `Stopped by: @${message.author.tag}`,
+                        value: `Stopped by: <@${message.author.id}>`,
                     },
                 ],
             }
