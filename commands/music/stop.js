@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
     name: 'stop',
     aliases: ['halt'],
@@ -5,18 +7,16 @@ module.exports = {
     description: 'Disconnects music player and deletes its queue',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
-        if(guildQueue && guildQueue.isPlaying){
-            guildQueue.stop();
-            const stop = {
-                color: 0x00f9f9,
-                fields:[
-                    {
-                        name: '<a:stop_button:944415175614816297> Music has been stopped!',
-                        value: `Stopped by: <@${message.author.id}>`,
-                    },
-                ],
-            }
-            message.channel.send({embeds: [stop]});
+        if(!guildQueue || !guildQueue.isPlaying){
+            message.channel.send(`<@${message.author.id}> there is no player active!`);
+            return;
         }
+
+        guildQueue.stop();
+        const stop = new MessageEmbed()
+            .setColor('0x00f9f9')
+            .addField('<a:stop_button:944415175614816297> Music has been stopped!',`Stopped by: <@${message.author.id}>`)
+
+        message.channel.send({embeds: [stop]});
     }
 }

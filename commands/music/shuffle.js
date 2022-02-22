@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
     name: 'shuffle',
     aliases: ['mix'],
@@ -5,18 +7,18 @@ module.exports = {
     description: 'Shuffles current queue',
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
-        if(guildQueue && guildQueue.isPlaying){
-            guildQueue.shuffle();
-            const shuffle = {
-                color: 0x00f9f9,
-                fields:[
-                    {
-                        name: '<a:twisted_rightwards_arrows:944416140367642644> Queue has been shuffled!',
-                        value: `Queue shuffled by: <@${message.author.id}>`,
-                    },
-                ],
-            }
-            message.channel.send({embeds: [shuffle]});
+        if(!guildQueue || !guildQueue.isPlaying){
+            message.channel.send(`<@${message.author.id}> there is no queue to shuffle!`);
+            return;
         }
+
+        guildQueue.shuffle();
+        const shuffle = new MessageEmbed()
+            .setColor('0x00f9f9')
+            .addField('<a:twisted_rightwards_arrows:944416140367642644> Queue has been shuffled!', `Queue shuffled by: <@${message.author.id}>`)
+            
+        message.channel.send({embeds: [shuffle]});
     }
-}  
+}
+
+  
