@@ -1,9 +1,12 @@
+const { DefaultPlayerOptions, DefaultPlayOptions } = require("discord-music-player");
+
 module.exports = {
     name: 'play',
     category: 'music',
     description: 'Queues a song in music player',
     async execute(client, message, args){
-        let maxQueueSize = 3;
+        DefaultPlayOptions.requestedBy = message.author.tag;
+        let maxQueueSize = 100;
         if(!message.member.voice.channelId){
             message.reply('You are not in a voice channel!')
             return;
@@ -15,15 +18,14 @@ module.exports = {
         let queue = client.player.createQueue(message.guild.id);
         let guildQueue = client.player.getQueue(message.guild.id);
         if(guildQueue.songs.length == maxQueueSize){
-            message.reply('Queue limit has been reached!')
+            message.reply('Soft queue limit is 100! You are over now over the limit. Please remove songs or clear queue to have access to play/playlist commands!');
             return;
         }
         await queue.join(message.member.voice.channel);
-        let song = await queue.play(args.join(' ')).catch(_ => {
+        await queue.play(args.join(' ')).catch(_ => {
             if(!guildQueue){
                 queue.stop();
             }
         })
-        song.requestedBy = message.author.tag;
     }
 }
