@@ -13,6 +13,11 @@ module.exports = {
             message.reply('There is no queue!');
             return;
         }
+        if(guildQueue.songs.length == 1)
+        {
+            message.reply('There are no songs in queue!');
+            return;
+        }
 
         // Obtain current song list (queue) and determine amount of songs we want per embed page
         let songList = guildQueue.songs;
@@ -22,9 +27,9 @@ module.exports = {
 
         // For every amount of songs we want per embed page in the queue length, we splice and increment by that amount while mapping the information of the songs name and url
         // per song in the splice, then we push that information to a predefined empty array to hold the embeds. This loops until conditions are met. 
-        for(let currentSong = 0; currentSong < songList.length;  currentSong += songsPerPage){
+        for(let currentSong = 1; currentSong < songList.length;  currentSong += songsPerPage - 1){
             const currentSplice = songList.slice(currentSong, spliceCount);
-            let queuePos = currentSong;
+            let queuePos = currentSong - 1;
             spliceCount += 6;
             const currentSongInfo = currentSplice.map(song => `${++queuePos}) [${song.name}](${song.url})`).join('\n');
             const embed = new MessageEmbed()
