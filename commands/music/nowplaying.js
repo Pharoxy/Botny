@@ -9,7 +9,7 @@ module.exports = {
         // Obtaines player queue, and if available, returns an embeded response with information about the song currently playing
         let guildQueue = client.player.getQueue(message.guild.id);
         if(!guildQueue || !guildQueue.isPlaying){
-            message.channel.send(`<@${message.author.id}> there is no song currently playing!`);
+            message.reply('No song is currently playing!');
             return;
         }
         const progressBar = guildQueue.createProgressBar();

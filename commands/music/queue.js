@@ -10,7 +10,7 @@ module.exports = {
         // Determines if queue is active or player exists. Failing so returns a bot reply
         let guildQueue = client.player.getQueue(message.guild.id);
         if(!guildQueue || !guildQueue.isPlaying){
-            message.channel.send(`<@${message.author.id}> There is no queue currently!`);
+            message.reply('There is no queue!');
             return;
         }
 

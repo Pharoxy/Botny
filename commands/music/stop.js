@@ -8,7 +8,7 @@ module.exports = {
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
         if(!guildQueue || !guildQueue.isPlaying){
-            message.channel.send(`<@${message.author.id}> there is no player active!`);
+            message.reply('There is no music player active!');
             return;
         }
 

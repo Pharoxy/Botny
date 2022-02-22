@@ -8,11 +8,11 @@ module.exports = {
     async execute(client, message, args){
         let guildQueue = client.player.getQueue(message.guild.id);
         if(!guildQueue || !guildQueue.isPlaying){
-            message.channel.send(`<@${message.author.id}> there is no song to pause!`);
+            message.reply(`There is no song to pause!`);
             return;
         }
-        if(guildQueue.paused == true){
-            message.channel.send(`<@${message.author.id}> Song is already paused!`)
+        if(guildQueue.paused){
+            message.reply(`Song is already paused!`)
             return;
         }
         
