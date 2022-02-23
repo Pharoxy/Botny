@@ -18,6 +18,7 @@ client.events = new Discord.Collection();
 const { Player } = require("discord-music-player");
 const player = new Player(client, {
     leaveOnEmpty: false,
+    timeout: 10000,
 });
 
 client.player = player;
