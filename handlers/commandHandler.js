@@ -13,5 +13,5 @@ module.exports = (client, Discord) => {
             }
         }
     }
-    ['simple', 'music'].forEach(e => loadDir(e));
+    ['simple', 'music', 'utility'].forEach(e => loadDir(e));
 }

@@ -1,6 +1,7 @@
 module.exports = {
     name: 'ping',
-    description: "This is a simple ping pong command",
+    category: 'simple',
+    description: "pong!",
     async execute(client, message, args){
         message.reply('pong!');
     }
